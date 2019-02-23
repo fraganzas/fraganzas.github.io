@@ -1,5 +1,16 @@
 <!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>vue-github</title><link rel=manifest href=/manifest.json><link href=/static/css/app.30790115300ab27614ce176899523b62.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.b458bac7043029281f37.js></script><script type=text/javascript src=/static/js/app.f58a09a835649bfc249d.js></script></body><script>(function() {
+       (function() {
       if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/pwabuilder-sw-register.js');
+        if (navigator.serviceWorker) {
+          console.log('[PWA Builder] active service worker found, no need to register')
+        } else {
+
+        //Register the ServiceWorker
+          navigator.serviceWorker.register('pwabuilder-sw.js', {
+            scope: './'
+          }).then(function(reg) {
+            console.log('Service worker has been registered for scope:'+ reg.scope);
+          });
+        }
       }
     })();</script></html>
